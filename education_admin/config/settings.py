@@ -26,6 +26,7 @@ include(
     'components/installed_apps.py',
     'components/middleware.py',
     'components/templates.py',
+    'components/internationalization.py',
     'components/debug_toolbar_panels.py',
 )
 

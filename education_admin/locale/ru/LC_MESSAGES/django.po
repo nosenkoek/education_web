@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-31 20:49+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app_education\apps.py:8
+msgid "education"
+msgstr "подготовка"
+
+#: .\app_education\models.py:17 .\app_education\models.py:62
+msgid "discipline"
+msgstr "дисциплина"
+
+#: .\app_education\models.py:18
+msgid "disciplines"
+msgstr "дисциплины"
+
+#: .\app_education\models.py:27
+msgid "name"
+msgstr "название"
+
+#: .\app_education\models.py:28
+msgid "description"
+msgstr "описание"
+
+#: .\app_education\models.py:35
+msgid "curator"
+msgstr "куратор"
+
+#: .\app_education\models.py:43 .\app_education\models.py:57
+#: .\app_students\models.py:22
+msgid "direction of education"
+msgstr "направление подготовки"
+
+#: .\app_education\models.py:44
+msgid "directions of education"
+msgstr "направления подготовки"
+
+#: .\app_education\models.py:68
+msgid "direction with disciplines"
+msgstr "направление подготовки с дисциплинами"
+
+#: .\app_education\models.py:69
+msgid "directions with disciplines"
+msgstr "направления подготовки с дисциплинами"
+
+#: .\app_students\apps.py:8 .\app_students\models.py:56
+msgid "students"
+msgstr "студенты"
+
+#: .\app_students\models.py:16
+msgid "number"
+msgstr "номер"
+
+#: .\app_students\models.py:27 .\app_students\models.py:50
+msgid "class"
+msgstr "группа"
+
+#: .\app_students\models.py:28
+msgid "classes"
+msgstr "группы"
+
+#: .\app_students\models.py:31
+msgid "Group №{}"
+msgstr "Группа №{}"
+
+#: .\app_students\models.py:37
+msgid "first name"
+msgstr "имя"
+
+#: .\app_students\models.py:38
+msgid "last name"
+msgstr "фамилия"
+
+#: .\app_students\models.py:39
+msgid "patronymic"
+msgstr "отчество"
+
+#: .\app_students\models.py:43
+msgid "telephone number"
+msgstr "телефон"
+
+#: .\app_students\models.py:55
+msgid "student"
+msgstr "студент"
