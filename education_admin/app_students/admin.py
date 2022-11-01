@@ -12,6 +12,11 @@ class StudentInLineAdmin(admin.TabularInline):
     model = Student
     fields = ('full_name', 'email', 'tel_number', 'direction_fk')
     readonly_fields = fields
+    list_select_related = ('direction_fk',)
+
+    def get_queryset(self, request):
+        queryset = super(StudentInLineAdmin, self).get_queryset(request)
+        return queryset.select_related(*self.list_select_related)
 
     @admin.display(description=_('full name'))
     def full_name(self, obj):
@@ -31,6 +36,7 @@ class ClassAdmin(admin.ModelAdmin):
     """Панель для просмотра групп"""
     list_display = ('number', 'direction_fk', 'curator', 'free_place')
     readonly_fields = ('number',)
+    list_select_related = ('direction_fk', )
     ordering = ('number',)
     inlines = (StudentInLineAdmin,)
 
@@ -55,7 +61,6 @@ class StudentAdmin(admin.ModelAdmin):
     @admin.display(description=_('full name'))
     def full_name(self, obj) -> str:
         """Доп. поле отображения ФИО"""
-        self.obj = obj
         return obj.get_full_name()
 
     def render_change_form(self, request, context, add=False, change=False,
