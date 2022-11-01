@@ -7,6 +7,9 @@ from app_education.models import Direction
 from app_students.services.increment_utils import get_next_increment
 
 
+MAX_STUDENT_IN_CLASS = 20
+
+
 class Class(models.Model):
     """Студенческая группа"""
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
@@ -14,12 +17,11 @@ class Class(models.Model):
                                  default=get_next_increment,
                                  editable=False,
                                  verbose_name=_('number'))
-
     direction_fk = models.ForeignKey(Direction,
                                      on_delete=models.CASCADE,
                                      to_field='id',
                                      db_column='direction_fk',
-                                     verbose_name=_('direction of education'))
+                                     verbose_name=_('direction'))
 
     class Meta:
         managed = False
@@ -30,20 +32,42 @@ class Class(models.Model):
     def __str__(self):
         return _('Group №{}').format(self.number)
 
+    def free_place(self):
+        """
+        Подсчет количества свободных мест в группе.
+        :return:
+        """
+        count_students = self.student_set.count()
+        return MAX_STUDENT_IN_CLASS - count_students
+
 
 class Student(models.Model):
     """Студенты"""
+    class TypeGender(models.TextChoices):
+        FEMALE = 'female', _('female')
+        MALE = 'male', _('male')
+
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     first_name = models.CharField(max_length=30, verbose_name=_('first name'))
     last_name = models.CharField(max_length=30, verbose_name=_('last name'))
-    patronymic = models.CharField(max_length=30, verbose_name=_('patronymic'))
+    patronymic = models.CharField(max_length=30, verbose_name=_('patronymic'),
+                                  null=True, blank=True)
     email = models.CharField(unique=True, max_length=30,
                              verbose_name='email')
     tel_number = models.CharField(unique=True, max_length=30,
                                   verbose_name=_('telephone number'))
+    gender = models.CharField(max_length=10, choices=TypeGender.choices,
+                              verbose_name=_('gender'))
 
-    #todo: подумать как ограничить 20 студентами
+    direction_fk = models.ForeignKey(Direction,
+                                     on_delete=models.CASCADE,
+                                     to_field='id',
+                                     db_column='direction_fk',
+                                     verbose_name=_('direction'))
+
+    # todo: подумать как ограничить 20 студентами
     class_fk = models.ForeignKey(Class,
+                                 null=True, blank=True,
                                  on_delete=models.CASCADE,
                                  to_field='id',
                                  db_column='class_fk',

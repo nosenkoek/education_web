@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 20:49+0300\n"
+"POT-Creation-Date: 2022-11-01 12:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,14 @@ msgstr ""
 msgid "education"
 msgstr "подготовка"
 
+#: .\app_education\models.py:11 .\app_education\models.py:27
+msgid "name"
+msgstr "название"
+
+#: .\app_education\models.py:12 .\app_education\models.py:28
+msgid "description"
+msgstr "описание"
+
 #: .\app_education\models.py:17 .\app_education\models.py:62
 msgid "discipline"
 msgstr "дисциплина"
@@ -32,20 +40,11 @@ msgstr "дисциплина"
 msgid "disciplines"
 msgstr "дисциплины"
 
-#: .\app_education\models.py:27
-msgid "name"
-msgstr "название"
-
-#: .\app_education\models.py:28
-msgid "description"
-msgstr "описание"
-
 #: .\app_education\models.py:35
 msgid "curator"
 msgstr "куратор"
 
 #: .\app_education\models.py:43 .\app_education\models.py:57
-#: .\app_students\models.py:22
 msgid "direction of education"
 msgstr "направление подготовки"
 
@@ -61,42 +60,66 @@ msgstr "направление подготовки с дисциплинами"
 msgid "directions with disciplines"
 msgstr "направления подготовки с дисциплинами"
 
-#: .\app_students\apps.py:8 .\app_students\models.py:56
+#: .\app_students\admin.py:15 .\app_students\admin.py:47
+msgid "full name"
+msgstr "ФИО"
+
+#: .\app_students\admin.py:35
+msgid "free places"
+msgstr "свободные места"
+
+#: .\app_students\apps.py:8 .\app_students\models.py:81
 msgid "students"
 msgstr "студенты"
 
-#: .\app_students\models.py:16
+#: .\app_students\models.py:20
 msgid "number"
 msgstr "номер"
 
-#: .\app_students\models.py:27 .\app_students\models.py:50
+#: .\app_students\models.py:25 .\app_students\models.py:67
+msgid "direction"
+msgstr "направление подготовки"
+
+#: .\app_students\models.py:30 .\app_students\models.py:75
 msgid "class"
 msgstr "группа"
 
-#: .\app_students\models.py:28
+#: .\app_students\models.py:31
 msgid "classes"
 msgstr "группы"
 
-#: .\app_students\models.py:31
+#: .\app_students\models.py:34
 msgid "Group №{}"
 msgstr "Группа №{}"
 
-#: .\app_students\models.py:37
+#: .\app_students\models.py:48
+msgid "female"
+msgstr "жен"
+
+#: .\app_students\models.py:49
+msgid "male"
+msgstr "муж"
+
+#: .\app_students\models.py:52
 msgid "first name"
 msgstr "имя"
 
-#: .\app_students\models.py:38
+#: .\app_students\models.py:53
 msgid "last name"
 msgstr "фамилия"
 
-#: .\app_students\models.py:39
+#: .\app_students\models.py:54
 msgid "patronymic"
 msgstr "отчество"
 
-#: .\app_students\models.py:43
+#: .\app_students\models.py:59
 msgid "telephone number"
 msgstr "телефон"
 
-#: .\app_students\models.py:55
+#: .\app_students\models.py:61
+msgid "gender"
+msgstr "пол"
+
+#: .\app_students\models.py:80
 msgid "student"
 msgstr "студент"

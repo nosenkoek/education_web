@@ -7,9 +7,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Discipline(models.Model):
     """Учебная дисциплина (предмет)"""
-    id = models.UUIDField(primary_key=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
+    name = models.CharField(max_length=100, verbose_name=_('name'))
+    description = models.TextField(verbose_name=_('description'))
 
     class Meta:
         managed = False
@@ -35,7 +35,8 @@ class Direction(models.Model):
                                    verbose_name=_('curator'))
 
     discipline = models.ManyToManyField(Discipline,
-                                        through='DirectionDiscipline')
+                                        through='DirectionDiscipline',
+                                        related_name='direction')
 
     class Meta:
         managed = False
