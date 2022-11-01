@@ -35,8 +35,9 @@ class StudentInLineAdmin(admin.TabularInline):
 class ClassAdmin(admin.ModelAdmin):
     """Панель для просмотра групп"""
     list_display = ('number', 'direction_fk', 'curator', 'free_place')
-    readonly_fields = ('number',)
+    readonly_fields = ('number', )
     list_select_related = ('direction_fk', )
+    list_filter = ('direction_fk',)
     ordering = ('number',)
     inlines = (StudentInLineAdmin,)
 
@@ -50,6 +51,11 @@ class ClassAdmin(admin.ModelAdmin):
         """Доп. поле свободных мест в группе"""
         return obj.direction_fk.curator_fk
 
+    def get_readonly_fields(self, request, obj=None):
+        if obj is not None:
+            return ('number', 'direction_fk')
+        return super(ClassAdmin, self).get_readonly_fields(request, obj)
+
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -57,6 +63,8 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'tel_number', 'email', 'class_fk',
                     'direction_fk')
     list_select_related = ('class_fk', 'direction_fk')
+    list_filter = ('class_fk', 'direction_fk')
+    search_fields = ('first_name', 'last_name', 'patronymic', 'email')
 
     @admin.display(description=_('full name'))
     def full_name(self, obj) -> str:

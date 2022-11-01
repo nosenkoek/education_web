@@ -83,3 +83,6 @@ class Student(models.Model):
         if self.patronymic is None:
             return f'{self.last_name} {self.first_name}'
         return f'{self.last_name} {self.first_name} {self.patronymic}'
+
+    def __str__(self):
+        return self.get_full_name()
