@@ -3,6 +3,7 @@ ALTER ROLE admin SET search_path TO content,public;
 SET search_path TO content,public;
 
 
+
 ALTER TABLE IF EXISTS "content".direction
     DROP CONSTRAINT curator_fk;
 
@@ -11,6 +12,8 @@ DROP TABLE IF EXISTS "content".student;
 DROP TABLE IF EXISTS "content".discipline;
 DROP TABLE IF EXISTS "content".class;
 DROP TABLE IF EXISTS "content".direction;
+
+DROP TYPE IF EXISTS type_gender;
 
 
 
@@ -37,6 +40,8 @@ CREATE TABLE "content".direction_discipline(
 
 -- STUDENT
 
+CREATE TYPE type_gender AS ENUM ('female', 'male');
+
 CREATE TABLE "content".class (
     id uuid PRIMARY KEY,
     number serial NOT NULL,
@@ -47,10 +52,12 @@ CREATE TABLE "content".student (
     id uuid PRIMARY KEY,
     first_name varchar(30) NOT NULL,
     last_name varchar(30) NOT NULL,
-    patronymic varchar(30) NOT NULL,
+    patronymic varchar(30),
     email varchar(30) UNIQUE NOT NULL,
-    tel_number varchar(30) UNIQUE NOT NULL,
-    class_fk uuid NOT NULL
+    tel_number char(10) UNIQUE NOT NULL,
+    gender type_gender NOT NULL,
+    direction_fk  uuid NOT NULL,
+    class_fk uuid
 );
 
 ALTER TABLE direction
@@ -67,11 +74,11 @@ ALTER TABLE direction_discipline
     ADD CONSTRAINT category_feature_uk UNIQUE (direction_fk, discipline_fk);
 
 
-ALTER TABLE class
+ALTER TABLE student
     ADD CONSTRAINT direction_fk FOREIGN KEY (direction_fk)
         REFERENCES direction(id) ON DELETE CASCADE;
-
 ALTER TABLE student
     ADD CONSTRAINT class_fk FOREIGN KEY (class_fk)
         REFERENCES class(id) ON DELETE CASCADE;
 -- todo: подумать как сделать ограничение на группу (не более 20 студентов в группе)
+-- todo: подумать как сделать проверку на то что у класса и студента одно направление
