@@ -62,7 +62,7 @@ class StudentLoadDataHandler():
                         last_name=fake.last_name(),
                         patronymic=fake.last_name(),
                         email=fake.email(),
-                        tel_number=str(random.randint(10 ** 10, 10 ** 11)),
+                        tel_number=str(random.randint(10 ** 9, 10 ** 10)),
                         gender=random.choice(['female', 'male']),
                         direction_fk=random.choice(self.data))
             )
