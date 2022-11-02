@@ -4,10 +4,31 @@ from typing import List
 from django.contrib.auth.models import Permission, Group
 from django.contrib.contenttypes.models import ContentType
 from django.core.management import BaseCommand
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
 from app_education.models import Discipline, Direction, DirectionDiscipline
 from app_students.models import Class, Student
+from app_users.services.decorator import CollectionPermission
+
+
+ACTIONS = ('view', 'delete', 'add', 'change')
+
+
+class FactoryPermissions():
+    MODELS = {}
+
+    def __call__(self, key, actions):
+        permission_class = self.MODELS.get(key)
+        permission_obj = permission_class(*actions)
+        content_type = ContentType.objects.get_for_model(permission_obj.model)
+
+        permission_objs = [Permission(codename=permission[0],
+                                      name=permission[1],
+                                      content_type=content_type)
+                           for permission in permission_obj.permissions]
+
+        Permission.objects.bulk_create(permission_objs)
 
 
 class PermissionBase(ABC):
@@ -23,52 +44,56 @@ class PermissionBase(ABC):
         return self._permissions
 
 
+@CollectionPermission('discipline', FactoryPermissions.MODELS)
 class PermissionDiscipline(PermissionBase):
     model = Discipline
 
 
+@CollectionPermission('direction', FactoryPermissions.MODELS)
 class PermissionDirection(PermissionBase):
     model = Direction
 
 
+@CollectionPermission('directiondiscipline', FactoryPermissions.MODELS)
 class PermissionDirectionDiscipline(PermissionBase):
     model = DirectionDiscipline
 
 
+@CollectionPermission('student', FactoryPermissions.MODELS)
 class PermissionStudent(PermissionBase):
     model = Student
 
 
+@CollectionPermission('class', FactoryPermissions.MODELS)
 class PermissionClass(PermissionBase):
     model = Class
 
 
-class FactoryPermissions():
-    def __init__(self, *args):
-        self.MODELS = {
-            0: PermissionDiscipline(*args),
-            1: PermissionDirection(*args),
-            2: PermissionDirectionDiscipline(*args),
-            3: PermissionStudent(*args),
-            4: PermissionClass(*args)
-        }
+class AddGroupMixin():
+    @staticmethod
+    def add_group_admin():
+        group = Group.objects.create(name='Администратор')
+        permissions = Permission.objects.all()
+        group.permissions.set(permissions)
+        group.save()
 
-    def __call__(self, key):
-        content_type = ContentType.objects.get_for_model(
-            self.MODELS.get(key).model)
-
-        permission_objs = [Permission(codename=permission[0],
-                                      name=permission[1],
-                                      content_type=content_type)
-                           for permission in self.MODELS.get(key).permissions]
-
-        Permission.objects.bulk_create(permission_objs)
+    @staticmethod
+    def add_group_curator():
+        group = Group.objects.create(name='Куратор')
+        permissions = Permission.objects.filter(
+            content_type__model__in=['class', 'student']).all()
+        group.permissions.set(permissions)
+        group.save()
 
 
-class Command(BaseCommand):
-    help = 'Displays current time'
+class Command(BaseCommand, AddGroupMixin):
+    help = 'Add teo groups (admin, curator) and add permission to these groups'
 
+    @transaction.atomic
     def handle(self, *args, **kwargs):
-        factory = FactoryPermissions('view', 'delete', 'add', 'change')
+        factory = FactoryPermissions()
         for key in factory.MODELS.keys():
-            factory(key)
+            factory(key, actions=ACTIONS)
+
+        self.add_group_admin()
+        self.add_group_curator()

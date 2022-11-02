@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from app_students.models import Class, Student
+from app_students.models import Class, Student, MAX_STUDENT_IN_CLASS
 
 
 class StudentInLineAdmin(admin.TabularInline):
@@ -30,6 +30,10 @@ class StudentInLineAdmin(admin.TabularInline):
         """Возможность добавлять студентов"""
         return False
 
+    def has_delete_permission(self, request, obj=None) -> bool:
+        """Возможность удалять студентов"""
+        return False
+
 
 @admin.register(Class)
 class ClassAdmin(admin.ModelAdmin):
@@ -52,7 +56,7 @@ class ClassAdmin(admin.ModelAdmin):
         return obj.direction_fk.curator_fk
 
     def get_readonly_fields(self, request, obj=None):
-        if obj is not None:
+        if obj:
             return ('number', 'direction_fk')
         return super(ClassAdmin, self).get_readonly_fields(request, obj)
 
@@ -79,7 +83,9 @@ class StudentAdmin(admin.ModelAdmin):
         # Переопределение queryset для class_fk.
         # Возможность выбора группы только по направлению и
         # в случае свободного места
-        context['adminform'].form.fields['class_fk'].queryset = \
-            Class.objects.annotate(free_places=Count('student')) \
-            .filter(direction_fk=obj.direction_fk, free_places__gte=0)
+        if obj:
+            context['adminform'].form.fields['class_fk'].queryset = \
+                Class.objects.annotate(count_stusent=Count('student')) \
+                .filter(direction_fk=obj.direction_fk,
+                        count_stusent__lt=MAX_STUDENT_IN_CLASS)
         return result

@@ -1,21 +1,5 @@
 [
 {
-    "model": "auth.group",
-    "pk": 1,
-    "fields": {
-        "name": "Администратор",
-        "permissions": []
-    }
-},
-{
-    "model": "auth.group",
-    "pk": 2,
-    "fields": {
-        "name": "Куратор",
-        "permissions": []
-    }
-},
-{
     "model": "auth.user",
     "pk": 1,
     "fields": {

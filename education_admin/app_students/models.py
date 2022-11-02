@@ -65,7 +65,6 @@ class Student(models.Model):
                                      db_column='direction_fk',
                                      verbose_name=_('direction'))
 
-    # todo: подумать как ограничить 20 студентами
     class_fk = models.ForeignKey(Class,
                                  null=True, blank=True,
                                  on_delete=models.CASCADE,
