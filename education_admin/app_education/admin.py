@@ -19,6 +19,7 @@ class DirectionAdmin(admin.ModelAdmin):
     list_display = ('name', 'curator_fk')
     list_filter = ('curator_fk',)
     list_select_related = ('curator_fk',)
+    search_fields = ('name',)
     inlines = (DisciplineInLineAdmin, )
 
 
@@ -26,4 +27,5 @@ class DirectionAdmin(admin.ModelAdmin):
 class DisciplineAdmin(admin.ModelAdmin):
     """Панель для дисциплин"""
     list_display = ('name',)
+    search_fields = ('name',)
     inlines = (DirectionInLineAdmin,)

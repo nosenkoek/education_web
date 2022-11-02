@@ -12,3 +12,18 @@ services:
       - ./schema_design/pg.env
     volumes:
       - ./schema_design/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  education_app:
+    build: ./education_admin/
+    command: >
+      bash -c "sleep 10
+      && python manage.py migrate
+      && python manage.py compilemessages
+      && python manage.py add_permissions
+      && python manage.py loaddata fixtures/users.json
+      && python manage.py loaddata fixtures/education.json
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      -   db
