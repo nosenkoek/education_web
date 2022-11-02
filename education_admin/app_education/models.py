@@ -27,7 +27,6 @@ class Direction(models.Model):
     name = models.CharField(max_length=100, verbose_name=_('name'))
     description = models.TextField(verbose_name=_('description'))
 
-    # TODO: продумать как ограничить куратор/админ
     curator_fk = models.ForeignKey(User,
                                    on_delete=models.CASCADE,
                                    to_field='id',

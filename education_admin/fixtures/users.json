@@ -1,0 +1,80 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$mxX8m4ZExiUDZXcOCiuvuG$quBGkX/s1GB3mVp4R65fYQFQrdvvGS4HbtxoUYDhevM=",
+        "last_login": "2022-11-01T17:31:08.881",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-11-01T17:30:48.197",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$LdMFjtZtDfA3KDaDPJEGu6$BI4Nfke2yXBqatGQg4fJgA9VKcu1yqD42sB5oIy+ahI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "admin1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-11-01T17:31:29",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$qWZac6zg2XCpSF3AJAbdls$EoZqEjyUANA7/0bOyyP7g/aqgFqtYtcE5PxXJNalv7U=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "curator1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-11-01T17:32:29",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$0ZiVlzvWaXQLh1NdyRI6kM$K3ZLbpe1wefCrhYv2M1286U7Nn4/pENofrn38yYUdJg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "curator2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-11-01T17:32:51",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+}
+]

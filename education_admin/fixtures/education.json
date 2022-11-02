@@ -1,579 +1,15 @@
 [
 {
-    "model": "admin.logentry",
-    "pk": 1,
+    "model": "app_education.discipline",
+    "pk": "58d8e55d-b5ae-4137-b05a-a9ad8f32de99",
     "fields": {
-        "action_time": "2022-11-01T04:01:27.269",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "1",
-        "object_repr": "Администратор",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-        "action_time": "2022-11-01T04:01:51.831",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "2",
-        "object_repr": "Куратор",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-        "action_time": "2022-10-31T21:59:36.845",
-        "user": 1,
-        "content_type": 4,
-        "object_id": "2",
-        "object_repr": "curator1",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-        "action_time": "2022-10-31T21:59:49.519",
-        "user": 1,
-        "content_type": 4,
-        "object_id": "2",
-        "object_repr": "curator1",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-        "action_time": "2022-10-31T22:00:09.446",
-        "user": 1,
-        "content_type": 8,
-        "object_id": "ca42c647-151c-44df-a1ae-22f72484e277",
-        "object_repr": "Python Basic",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-        "action_time": "2022-10-31T22:00:12.684",
-        "user": 1,
-        "content_type": 8,
-        "object_id": "ca42c647-151c-44df-a1ae-22f72484e277",
-        "object_repr": "Python Basic",
-        "action_flag": 2,
-        "change_message": "[]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-        "action_time": "2022-10-31T22:00:35.308",
-        "user": 1,
-        "content_type": 8,
-        "object_id": "053c1fae-c3d9-4b5b-a191-ac30e4f828ba",
-        "object_repr": "Django-framework",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-        "action_time": "2022-10-31T22:00:43.704",
-        "user": 1,
-        "content_type": 8,
-        "object_id": "d16ecb0c-745f-4ac9-abd9-a5a247b5b19a",
-        "object_repr": "Java Basic",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-        "action_time": "2022-10-31T22:00:54.721",
-        "user": 1,
-        "content_type": 8,
-        "object_id": "9f3776df-70c8-4a93-8810-b02b32401734",
-        "object_repr": "SQL",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-        "action_time": "2022-10-31T22:01:41.924",
-        "user": 1,
-        "content_type": 7,
-        "object_id": "93763165-7867-41fb-a2be-b1563b5a20c6",
-        "object_repr": "Python разработчик",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"direction with disciplines\", \"object\": \"DirectionDiscipline object (09e47a87-258c-403d-9d3e-52a6e5a4db28)\"}}, {\"added\": {\"name\": \"direction with disciplines\", \"object\": \"DirectionDiscipline object (dd8fbebb-731d-446b-a21a-95a2d74f20b9)\"}}, {\"added\": {\"name\": \"direction with disciplines\", \"object\": \"DirectionDiscipline object (1182c756-d9a2-484f-940f-78e5c4f0f516)\"}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-        "action_time": "2022-10-31T22:01:56.570",
-        "user": 1,
-        "content_type": 4,
-        "object_id": "3",
-        "object_repr": "curator2",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 12,
-    "fields": {
-        "action_time": "2022-10-31T22:02:10.765",
-        "user": 1,
-        "content_type": 4,
-        "object_id": "3",
-        "object_repr": "curator2",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 13,
-    "fields": {
-        "action_time": "2022-10-31T22:02:45.413",
-        "user": 1,
-        "content_type": 7,
-        "object_id": "5f88f2fb-8af7-469f-be1e-d3b85c331a8d",
-        "object_repr": "Java разработчик",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"direction with disciplines\", \"object\": \"DirectionDiscipline object (b8581764-030f-49f3-995d-80684c9eefbb)\"}}, {\"added\": {\"name\": \"direction with disciplines\", \"object\": \"DirectionDiscipline object (0cd85560-b951-49ad-a2c9-7ac6a653609d)\"}}]"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-        "name": "Can add log entry",
-        "content_type": 1,
-        "codename": "add_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-        "name": "Can change log entry",
-        "content_type": 1,
-        "codename": "change_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-        "name": "Can delete log entry",
-        "content_type": 1,
-        "codename": "delete_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-        "name": "Can view log entry",
-        "content_type": 1,
-        "codename": "view_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-        "name": "Can add permission",
-        "content_type": 2,
-        "codename": "add_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-        "name": "Can change permission",
-        "content_type": 2,
-        "codename": "change_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-        "name": "Can delete permission",
-        "content_type": 2,
-        "codename": "delete_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-        "name": "Can view permission",
-        "content_type": 2,
-        "codename": "view_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-        "name": "Can add group",
-        "content_type": 3,
-        "codename": "add_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-        "name": "Can change group",
-        "content_type": 3,
-        "codename": "change_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-        "name": "Can delete group",
-        "content_type": 3,
-        "codename": "delete_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-        "name": "Can view group",
-        "content_type": 3,
-        "codename": "view_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-        "name": "Can add user",
-        "content_type": 4,
-        "codename": "add_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-        "name": "Can change user",
-        "content_type": 4,
-        "codename": "change_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-        "name": "Can delete user",
-        "content_type": 4,
-        "codename": "delete_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-        "name": "Can view user",
-        "content_type": 4,
-        "codename": "view_user"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-        "name": "Can add content type",
-        "content_type": 5,
-        "codename": "add_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-        "name": "Can change content type",
-        "content_type": 5,
-        "codename": "change_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-        "name": "Can delete content type",
-        "content_type": 5,
-        "codename": "delete_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-        "name": "Can view content type",
-        "content_type": 5,
-        "codename": "view_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-        "name": "Can add session",
-        "content_type": 6,
-        "codename": "add_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-        "name": "Can change session",
-        "content_type": 6,
-        "codename": "change_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-        "name": "Can delete session",
-        "content_type": 6,
-        "codename": "delete_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-        "name": "Can view session",
-        "content_type": 6,
-        "codename": "view_session"
-    }
-},
-{
-    "model": "auth.group",
-    "pk": 1,
-    "fields": {
-        "name": "Администратор",
-        "permissions": [
-            1,
-            2,
-            3,
-            4,
-            9,
-            10,
-            11,
-            12,
-            5,
-            6,
-            7,
-            8,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24
-        ]
-    }
-},
-{
-    "model": "auth.group",
-    "pk": 2,
-    "fields": {
-        "name": "Куратор",
-        "permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 1,
-    "fields": {
-        "password": "pbkdf2_sha256$260000$RxqCPQiwlPHsSmOWJ6LAyl$yJrnd+GudIahZZDXSJREjIlPMN9HxIoSzDDUNuI0+I4=",
-        "last_login": "2022-11-01T04:00:38.456",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2022-11-01T04:00:00.899",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 2,
-    "fields": {
-        "password": "pbkdf2_sha256$260000$z66IW5txvN1Pu7zqnIO9FF$HA3xrtXaCywjkLrDbiujBFsHUgSEdt4XS9HRLAdQMgY=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "curator1",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-10-31T21:59:36",
-        "groups": [
-            2
-        ],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 3,
-    "fields": {
-        "password": "pbkdf2_sha256$260000$kuw7DfnlCxrz6ue5S88mZZ$6mf0OWLvJlR1bhGck80r8sTnH8mMTCmrqsLeMo1/Kjc=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "curator2",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-10-31T22:01:56",
-        "groups": [
-            2
-        ],
-        "user_permissions": []
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-        "app_label": "admin",
-        "model": "logentry"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-        "app_label": "auth",
-        "model": "permission"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-        "app_label": "auth",
-        "model": "group"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-        "app_label": "auth",
-        "model": "user"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-        "app_label": "contenttypes",
-        "model": "contenttype"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-        "app_label": "sessions",
-        "model": "session"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-        "app_label": "app_education",
-        "model": "direction"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-        "app_label": "app_education",
-        "model": "discipline"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "296v577pix4i2f2httby6ndo1uhdiq69",
-    "fields": {
-        "session_data": ".eJxVjMEOwiAQRP-FsyHAQgsevfcbCLtLpWpoUtqT8d9tkx70Npn3Zt4ipm0tcWt5iROLq9Di8tthomeuB-BHqvdZ0lzXZUJ5KPKkTQ4z59ftdP8OSmplXwftLVIGCuxCMspm2LNVADpxb0djUPUOnYbRMXhUplNdYE_ESNqh-HwBzvA3kA:1opY9O:yHdmouvnzRTT9cTdaz-FSRcSQasRSii4-2nwdS_QCIY",
-        "expire_date": "2022-11-15T05:00:38.516"
+        "name": "Java Basic",
+        "description": "основы"
     }
 },
 {
     "model": "app_education.discipline",
-    "pk": "053c1fae-c3d9-4b5b-a191-ac30e4f828ba",
-    "fields": {
-        "name": "Django-framework",
-        "description": "django, drf"
-    }
-},
-{
-    "model": "app_education.discipline",
-    "pk": "9f3776df-70c8-4a93-8810-b02b32401734",
-    "fields": {
-        "name": "SQL",
-        "description": "raw sql"
-    }
-},
-{
-    "model": "app_education.discipline",
-    "pk": "ca42c647-151c-44df-a1ae-22f72484e277",
+    "pk": "9d0e7aa1-6b0d-4c79-a6a3-2cce8e6c2855",
     "fields": {
         "name": "Python Basic",
         "description": "основы"
@@ -581,68 +17,76 @@
 },
 {
     "model": "app_education.discipline",
-    "pk": "d16ecb0c-745f-4ac9-abd9-a5a247b5b19a",
+    "pk": "b47e150c-d34f-45c8-a5dd-341562239382",
     "fields": {
-        "name": "Java Basic",
-        "description": "java"
+        "name": "Django-framework",
+        "description": "django, DRF"
+    }
+},
+{
+    "model": "app_education.discipline",
+    "pk": "e8b7822e-47a7-4dfc-9e34-d86fbd24441f",
+    "fields": {
+        "name": "SQL",
+        "description": "raw SQL"
     }
 },
 {
     "model": "app_education.direction",
-    "pk": "5f88f2fb-8af7-469f-be1e-d3b85c331a8d",
+    "pk": "2cb1e3ad-2cd3-481d-8194-b93278c79b66",
     "fields": {
-        "name": "Java разработчик",
-        "description": "что-то на Java =)",
+        "name": "Python разработчик",
+        "description": "Python, PEP8, Django, DRF, PostgreSQL, FastApi, Flask",
         "curator_fk": 3
     }
 },
 {
     "model": "app_education.direction",
-    "pk": "93763165-7867-41fb-a2be-b1563b5a20c6",
+    "pk": "6d23c853-0f3c-48b5-aa99-dc69bfe7b988",
     "fields": {
-        "name": "Python разработчик",
-        "description": "Python, PEP8, Django, DRF, PostgreSQL, FastApi, Flask",
-        "curator_fk": 2
+        "name": "Java разработчик",
+        "description": "что-то на Java =)",
+        "curator_fk": 4
     }
 },
 {
     "model": "app_education.directiondiscipline",
-    "pk": "09e47a87-258c-403d-9d3e-52a6e5a4db28",
+    "pk": "17a1b734-4027-4138-8148-a5730dedc892",
     "fields": {
-        "direction_fk": "93763165-7867-41fb-a2be-b1563b5a20c6",
-        "discipline_fk": "ca42c647-151c-44df-a1ae-22f72484e277"
+        "direction_fk": "2cb1e3ad-2cd3-481d-8194-b93278c79b66",
+        "discipline_fk": "b47e150c-d34f-45c8-a5dd-341562239382"
     }
 },
 {
     "model": "app_education.directiondiscipline",
-    "pk": "0cd85560-b951-49ad-a2c9-7ac6a653609d",
+    "pk": "33957fd0-aa2e-4c9d-a6ad-bbe456d385b1",
     "fields": {
-        "direction_fk": "5f88f2fb-8af7-469f-be1e-d3b85c331a8d",
-        "discipline_fk": "9f3776df-70c8-4a93-8810-b02b32401734"
+        "direction_fk": "2cb1e3ad-2cd3-481d-8194-b93278c79b66",
+        "discipline_fk": "e8b7822e-47a7-4dfc-9e34-d86fbd24441f"
     }
 },
 {
     "model": "app_education.directiondiscipline",
-    "pk": "1182c756-d9a2-484f-940f-78e5c4f0f516",
+    "pk": "74e081e2-76f2-469e-a58c-a4ef93e7737a",
     "fields": {
-        "direction_fk": "93763165-7867-41fb-a2be-b1563b5a20c6",
-        "discipline_fk": "9f3776df-70c8-4a93-8810-b02b32401734"
+        "direction_fk": "6d23c853-0f3c-48b5-aa99-dc69bfe7b988",
+        "discipline_fk": "58d8e55d-b5ae-4137-b05a-a9ad8f32de99"
     }
 },
 {
     "model": "app_education.directiondiscipline",
-    "pk": "b8581764-030f-49f3-995d-80684c9eefbb",
+    "pk": "84f1b4f0-b085-4b4f-8b2c-68d9ee8c733e",
     "fields": {
-        "direction_fk": "5f88f2fb-8af7-469f-be1e-d3b85c331a8d",
-        "discipline_fk": "d16ecb0c-745f-4ac9-abd9-a5a247b5b19a"
+        "direction_fk": "6d23c853-0f3c-48b5-aa99-dc69bfe7b988",
+        "discipline_fk": "e8b7822e-47a7-4dfc-9e34-d86fbd24441f"
     }
 },
 {
     "model": "app_education.directiondiscipline",
-    "pk": "dd8fbebb-731d-446b-a21a-95a2d74f20b9",
+    "pk": "e26b4420-10fc-4a51-938b-a3e1dab62ef3",
     "fields": {
-        "direction_fk": "93763165-7867-41fb-a2be-b1563b5a20c6",
-        "discipline_fk": "053c1fae-c3d9-4b5b-a191-ac30e4f828ba"
+        "direction_fk": "2cb1e3ad-2cd3-481d-8194-b93278c79b66",
+        "discipline_fk": "9d0e7aa1-6b0d-4c79-a6a3-2cce8e6c2855"
     }
 }
 ]

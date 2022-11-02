@@ -65,7 +65,6 @@ class Student(models.Model):
                                      db_column='direction_fk',
                                      verbose_name=_('direction'))
 
-    # todo: подумать как ограничить 20 студентами
     class_fk = models.ForeignKey(Class,
                                  null=True, blank=True,
                                  on_delete=models.CASCADE,
@@ -83,3 +82,6 @@ class Student(models.Model):
         if self.patronymic is None:
             return f'{self.last_name} {self.first_name}'
         return f'{self.last_name} {self.first_name} {self.patronymic}'
+
+    def __str__(self):
+        return self.get_full_name()

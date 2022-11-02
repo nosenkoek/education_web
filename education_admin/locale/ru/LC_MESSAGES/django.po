@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-01 12:40+0300\n"
+"POT-Creation-Date: 2022-11-02 12:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "дисциплина"
 msgid "disciplines"
 msgstr "дисциплины"
 
-#: .\app_education\models.py:35
+#: .\app_education\models.py:34
 msgid "curator"
 msgstr "куратор"
 
@@ -60,66 +60,66 @@ msgstr "направление подготовки с дисциплинами"
 msgid "directions with disciplines"
 msgstr "направления подготовки с дисциплинами"
 
-#: .\app_students\admin.py:15 .\app_students\admin.py:47
+#: .\app_students\admin.py:21 .\app_students\admin.py:73
 msgid "full name"
 msgstr "ФИО"
 
-#: .\app_students\admin.py:35
+#: .\app_students\admin.py:48 .\app_students\admin.py:53
 msgid "free places"
 msgstr "свободные места"
 
-#: .\app_students\apps.py:8 .\app_students\models.py:81
+#: .\app_students\apps.py:8 .\app_students\models.py:79
 msgid "students"
 msgstr "студенты"
 
-#: .\app_students\models.py:20
+#: .\app_students\models.py:19
 msgid "number"
 msgstr "номер"
 
-#: .\app_students\models.py:25 .\app_students\models.py:67
+#: .\app_students\models.py:24 .\app_students\models.py:66
 msgid "direction"
 msgstr "направление подготовки"
 
-#: .\app_students\models.py:30 .\app_students\models.py:75
+#: .\app_students\models.py:29 .\app_students\models.py:73
 msgid "class"
 msgstr "группа"
 
-#: .\app_students\models.py:31
+#: .\app_students\models.py:30
 msgid "classes"
 msgstr "группы"
 
-#: .\app_students\models.py:34
+#: .\app_students\models.py:33
 msgid "Group №{}"
 msgstr "Группа №{}"
 
-#: .\app_students\models.py:48
+#: .\app_students\models.py:47
 msgid "female"
 msgstr "жен"
 
-#: .\app_students\models.py:49
+#: .\app_students\models.py:48
 msgid "male"
 msgstr "муж"
 
-#: .\app_students\models.py:52
+#: .\app_students\models.py:51
 msgid "first name"
 msgstr "имя"
 
-#: .\app_students\models.py:53
+#: .\app_students\models.py:52
 msgid "last name"
 msgstr "фамилия"
 
-#: .\app_students\models.py:54
+#: .\app_students\models.py:53
 msgid "patronymic"
 msgstr "отчество"
 
-#: .\app_students\models.py:59
+#: .\app_students\models.py:58
 msgid "telephone number"
 msgstr "телефон"
 
-#: .\app_students\models.py:61
+#: .\app_students\models.py:60
 msgid "gender"
 msgstr "пол"
 
-#: .\app_students\models.py:80
+#: .\app_students\models.py:78
 msgid "student"
 msgstr "студент"
