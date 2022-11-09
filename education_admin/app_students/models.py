@@ -40,6 +40,12 @@ class Class(models.Model):
         count_students = self.student_set.count()
         return MAX_STUDENT_IN_CLASS - count_students
 
+    def count_female(self):
+        return self.student_set.filter(gender='female').count()
+
+    def count_male(self) -> int:
+        return self.student_set.filter(gender='male').count()
+
 
 class Student(models.Model):
     """Студенты"""

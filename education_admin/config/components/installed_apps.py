@@ -6,6 +6,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'rest_framework',
     'app_users.apps.AppUsersConfig',
     'app_education.apps.AppEducationConfig',
     'app_students.apps.AppStudentsConfig'
