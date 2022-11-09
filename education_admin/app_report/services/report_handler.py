@@ -1,21 +1,14 @@
 import os
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import List, Tuple, Type
+from typing import List, Tuple, Type, Optional
 
 from pandas import DataFrame, ExcelWriter
 
 from django.db.models import QuerySet
-from django.conf import settings
 
 from app_education.models import Direction
-
-
-COLUMNS = ['Direction', 'Curator', 'Disciplines', 'Num group', 'Females',
-           'Males', 'Free places', 'Students']
-
-path_to_file = os.path.join(settings.MEDIA_ROOT, 'reports',
-                            'path_to_file.xlsx')
+from app_report.services.settings import PATH_TO_REPORT_FILES, COLUMNS
 
 
 @dataclass
@@ -28,7 +21,7 @@ class DirectionData():
     female_count: int
     male_count: int
     free_places: int
-    students_info: QuerySet
+    students_info: Optional[QuerySet]
 
     def get_row_as_tuple(self) -> Tuple[str, str, str, str,
                                         str, str, str, str]:
@@ -36,13 +29,14 @@ class DirectionData():
             yield (self.disciplines, self.curator_info, self.disciplines,
                    str(self.group_num), str(self.female_count),
                    str(self.male_count), str(self.free_places), '')
-
-        for index, student in enumerate(self.students_info):
-            if not index:
-                yield (self.disciplines, self.curator_info, self.disciplines,
-                       str(self.group_num), str(self.female_count),
-                       str(self.male_count), str(self.free_places), student)
-            yield '', '', '', '', '', '', '', student
+        else:
+            for index, student in enumerate(self.students_info):
+                if not index:
+                    yield (self.disciplines, self.curator_info,
+                           self.disciplines, str(self.group_num),
+                           str(self.female_count), str(self.male_count),
+                           str(self.free_places), student)
+                yield '', '', '', '', '', '', '', student
 
 
 class BaseData(ABC):
@@ -73,23 +67,35 @@ class DirectionDataAdapter(BaseData):
 
         data = []
 
-        for class_cur in self._direction.class_set.all():
-            group_num = class_cur.number
-            female_count = class_cur.count_female(),
-            male_count = class_cur.count_male(),
-            free_places = class_cur.free_place(),
-
-            direction_data = DirectionData(
+        if not self._direction.class_set.all():
+            data.append(DirectionData(
                 direction_name=direction_name,
                 curator_info=curator_info,
                 disciplines=disciplines,
-                group_num=group_num,
-                female_count=female_count[0],
-                male_count=male_count[0],
-                free_places=free_places[0],
-                students_info=class_cur.student_set.all()
-            )
-            data.append(direction_data)
+                group_num='',
+                female_count=0,
+                male_count=0,
+                free_places=0,
+                students_info=None
+            ))
+        else:
+            for class_cur in self._direction.class_set.all():
+                group_num = class_cur.number
+                female_count = class_cur.count_female(),
+                male_count = class_cur.count_male(),
+                free_places = class_cur.free_place(),
+
+                direction_data = DirectionData(
+                    direction_name=direction_name,
+                    curator_info=curator_info,
+                    disciplines=disciplines,
+                    group_num=group_num,
+                    female_count=female_count[0],
+                    male_count=male_count[0],
+                    free_places=free_places[0],
+                    students_info=class_cur.student_set.all()
+                )
+                data.append(direction_data)
         return data
 
     def get_data(self) -> List[str]:
@@ -128,8 +134,9 @@ class ReportHandler():
     """
     def __init__(self, directions: QuerySet):
         self._directions = directions
+        self._counter = 0
 
-    def create_report(self):
+    def create_report(self, count):
         """Создание отчета"""
         data = []
 
@@ -142,5 +149,8 @@ class ReportHandler():
 
         df = DataFrame(data, columns=COLUMNS)
 
-        with ExcelWriter(path_to_file) as writer:
+        name_file = f'report_{count}.xlsx'
+
+        with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,
+                                      name_file)) as writer:
             df.to_excel(writer)

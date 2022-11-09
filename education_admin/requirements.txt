@@ -10,3 +10,5 @@ djangorestframework
 Pandas
 openpyxl
 pydantic
+celery
+redis
