@@ -4,7 +4,11 @@ from app_report.services.report_handler import ReportHandler
 
 
 @shared_task
-def create_report(task_id):
+def create_report(task_id: str):
+    """
+    Задача для создания отчета
+    :param task_id: id для задачи и файла
+    """
     directions = Direction.objects \
         .prefetch_related('discipline',
                           'class_set__student_set') \

@@ -25,18 +25,20 @@ class DirectionData():
 
     def get_row_as_tuple(self) -> Tuple[str, str, str, str,
                                         str, str, str, str]:
+        for index, student in enumerate(self.students_info):
+            if not index:
+                result = (self.disciplines, self.curator_info,
+                          self.disciplines, str(self.group_num),
+                          str(self.female_count), str(self.male_count),
+                          str(self.free_places), student)
+            else:
+                result = ('', '', '', '', '', '', '', student)
+            yield result
+
         if not self.students_info:
             yield (self.disciplines, self.curator_info, self.disciplines,
                    str(self.group_num), str(self.female_count),
                    str(self.male_count), str(self.free_places), '')
-        else:
-            for index, student in enumerate(self.students_info):
-                if not index:
-                    yield (self.disciplines, self.curator_info,
-                           self.disciplines, str(self.group_num),
-                           str(self.female_count), str(self.male_count),
-                           str(self.free_places), student)
-                yield '', '', '', '', '', '', '', student
 
 
 class BaseData(ABC):
@@ -51,6 +53,7 @@ class DirectionDataAdapter(BaseData):
     Args:
         direction: объект Direction
     """
+
     def __init__(self, direction: Direction):
         self._direction = direction
 
@@ -132,25 +135,29 @@ class ReportHandler():
     Args:
         directions: QuerySet направлений,
     """
+
     def __init__(self, directions: QuerySet):
         self._directions = directions
         self._counter = 0
 
-    def create_report(self, count):
-        """Создание отчета"""
-        data = []
+    def create_report(self, task_id: str):
+        """
+        Создание отчета
+        :param task_id: id задачи для отчета
+        """
+        name_file = f'report_{task_id}.xlsx'
 
-        for direction in self._directions:
+        for index, direction in enumerate(self._directions):
             directions_handler = DirectionHandler(direction,
                                                   DirectionDataAdapter)
             rows = directions_handler.get_rows_direction()
-            # TODO: необходима запись пакетами
-            data.extend(rows)
+            df = DataFrame(rows, columns=COLUMNS)
 
-        df = DataFrame(data, columns=COLUMNS)
-
-        name_file = f'report_{count}.xlsx'
-
-        with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,
-                                      name_file)) as writer:
-            df.to_excel(writer)
+            if not index:
+                with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,
+                                              name_file), ) as writer:
+                    df.to_excel(writer, sheet_name=direction.name)
+            else:
+                with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,
+                                              name_file), mode='a') as writer:
+                    df.to_excel(writer, sheet_name=direction.name)
