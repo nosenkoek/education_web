@@ -4,7 +4,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from app_education.models import Direction
-from app_students.services.increment_utils import get_next_increment
 
 
 MAX_STUDENT_IN_CLASS = 20
@@ -14,8 +13,6 @@ class Class(models.Model):
     """Студенческая группа"""
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     number = models.IntegerField(unique=True,
-                                 default=get_next_increment,
-                                 editable=False,
                                  verbose_name=_('number'))
     direction_fk = models.ForeignKey(Direction,
                                      on_delete=models.CASCADE,
@@ -39,6 +36,12 @@ class Class(models.Model):
         """
         count_students = self.student_set.count()
         return MAX_STUDENT_IN_CLASS - count_students
+
+    def count_female(self):
+        return self.student_set.filter(gender='female').count()
+
+    def count_male(self) -> int:
+        return self.student_set.filter(gender='male').count()
 
 
 class Student(models.Model):

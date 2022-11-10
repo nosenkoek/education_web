@@ -44,7 +44,7 @@ CREATE TYPE type_gender AS ENUM ('female', 'male');
 
 CREATE TABLE "content".class (
     id uuid PRIMARY KEY,
-    number serial NOT NULL,
+    number int NOT NULL,
     direction_fk  uuid NOT NULL
 );
 

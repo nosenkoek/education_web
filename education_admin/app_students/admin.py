@@ -39,7 +39,6 @@ class StudentInLineAdmin(admin.TabularInline):
 class ClassAdmin(admin.ModelAdmin):
     """Панель для просмотра групп"""
     list_display = ('number', 'direction_fk', 'curator', 'free_place')
-    readonly_fields = ('number', )
     list_select_related = ('direction_fk', )
     list_filter = ('direction_fk',)
     ordering = ('number',)
