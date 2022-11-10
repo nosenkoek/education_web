@@ -29,6 +29,7 @@ include(
     'components/internationalization.py',
     'components/debug_toolbar_panels.py',
     'components/celery.py',
+    'components/logger.py',
 )
 
 STATIC_URL = '/static/'

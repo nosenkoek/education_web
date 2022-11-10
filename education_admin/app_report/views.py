@@ -1,3 +1,4 @@
+import logging
 from uuid import uuid4
 
 from django.contrib.auth.mixins import PermissionRequiredMixin, \
@@ -10,6 +11,8 @@ from django.utils.translation import gettext as _
 from app_report.services.looking_for_files import get_path_file
 from app_report.tasks import create_report
 from celery.result import AsyncResult
+
+logger = logging.getLogger(__name__)
 
 
 class AdminPermissionRequiredMixin(PermissionRequiredMixin,
@@ -25,6 +28,7 @@ class ReportView(AdminPermissionRequiredMixin, View):
     def get(self, request):
         task_id = str(uuid4())
         result = create_report.apply_async((task_id, ), task_id=task_id)
+        logger.info(f'Create task report {task_id}')
         url_address = reverse('status', kwargs={'task_id': task_id})
         return HttpResponse(f'Ваш отчет № {result.task_id}<br>'
                             f'Узнать статус можно по ссылке:'
@@ -54,5 +58,6 @@ class DownloadReportView(AdminPermissionRequiredMixin, View):
         file_name = f'report_{task_id}.xlsx'
         result = get_path_file(file_name)
         if result:
+            logger.info(f'Download task report {task_id}')
             return FileResponse(open(result, 'rb'))
         return HttpResponse('Файл не найден')
