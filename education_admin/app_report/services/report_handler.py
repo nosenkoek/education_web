@@ -155,7 +155,7 @@ class ReportHandler():
 
             if not index:
                 with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,
-                                              name_file), ) as writer:
+                                              name_file)) as writer:
                     df.to_excel(writer, sheet_name=direction.name)
             else:
                 with ExcelWriter(os.path.join(PATH_TO_REPORT_FILES,

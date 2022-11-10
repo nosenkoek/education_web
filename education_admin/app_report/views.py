@@ -1,15 +1,25 @@
 from uuid import uuid4
 
+from django.contrib.auth.mixins import PermissionRequiredMixin, \
+    LoginRequiredMixin
 from django.http import HttpResponse, FileResponse
 from django.urls import reverse
-from django.views import View
+from django.views.generic import View
+from django.utils.translation import gettext as _
 
 from app_report.services.looking_for_files import get_path_file
 from app_report.tasks import create_report
 from celery.result import AsyncResult
 
 
-class ReportView(View):
+class AdminPermissionRequiredMixin(PermissionRequiredMixin, LoginRequiredMixin):
+    login_url = '/admin/'
+    permission_denied_message = _("You don't have permission. "
+                                  "It can do only admin")
+    permission_required = 'app_education.view_direction'
+
+
+class ReportView(AdminPermissionRequiredMixin, View):
     """View для получения отчета"""
     def get(self, request):
         task_id = str(uuid4())
@@ -20,7 +30,7 @@ class ReportView(View):
                             f'<a href="{url_address}">Статус</a>')
 
 
-class StatusReportView(View):
+class StatusReportView(AdminPermissionRequiredMixin, View):
     """View для получения результата о статусе"""
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('task_id')
@@ -36,7 +46,7 @@ class StatusReportView(View):
         return HttpResponse(messages)
 
 
-class DownloadReportView(View):
+class DownloadReportView(AdminPermissionRequiredMixin, View):
     """View для загрузки файла"""
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('task_id')
