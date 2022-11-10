@@ -28,6 +28,7 @@ include(
     'components/templates.py',
     'components/internationalization.py',
     'components/debug_toolbar_panels.py',
+    'components/celery.py',
 )
 
 STATIC_URL = '/static/'
@@ -41,16 +42,3 @@ INTERNAL_IPS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
-
-
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_IGNORE_RESULT = False
-CELERY_TRACK_STARTED = True
-CELERYD_LOG_FILE = os.path.join(
-    BASE_DIR, 'celery', 'logs')
-CELERYD_LOG_LEVEL = "INFO"
-
