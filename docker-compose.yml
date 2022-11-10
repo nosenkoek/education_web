@@ -13,6 +13,28 @@ services:
     volumes:
       - ./schema_design/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  redis:
+    image: redis:7-alpine
+    restart: always
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: ./education_admin/
+    command: celery -A config worker -l info
+    volumes:
+      - media:/media
+    depends_on:
+      - redis
+
+  celery-beat:
+    build: ./education_admin/
+    command: celery -A config beat -l info
+    depends_on:
+      - redis
+
   education_app:
     build: ./education_admin/
     command: >
@@ -25,5 +47,24 @@ services:
       && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
+    volumes:
+      - media:/media
     depends_on:
-      -   db
+      - db
+      - redis
+
+  nginx:
+    restart: always
+    image: nginx:latest
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+    volumes:
+        - media:/media
+        - ./nginx:/etc/nginx/conf.d
+    depends_on:
+        -   education_app
+
+volumes:
+  media:

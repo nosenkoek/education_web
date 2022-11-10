@@ -25,20 +25,20 @@ class DirectionData():
 
     def get_row_as_tuple(self) -> Tuple[str, str, str, str,
                                         str, str, str, str]:
-        for index, student in enumerate(self.students_info):
-            if not index:
-                result = (self.disciplines, self.curator_info,
-                          self.disciplines, str(self.group_num),
-                          str(self.female_count), str(self.male_count),
-                          str(self.free_places), student)
-            else:
-                result = ('', '', '', '', '', '', '', student)
-            yield result
-
         if not self.students_info:
             yield (self.disciplines, self.curator_info, self.disciplines,
                    str(self.group_num), str(self.female_count),
                    str(self.male_count), str(self.free_places), '')
+        else:
+            for index, student in enumerate(self.students_info):
+                if not index:
+                    result = (self.disciplines, self.curator_info,
+                              self.disciplines, str(self.group_num),
+                              str(self.female_count), str(self.male_count),
+                              str(self.free_places), student)
+                else:
+                    result = ('', '', '', '', '', '', '', student)
+                yield result
 
 
 class BaseData(ABC):

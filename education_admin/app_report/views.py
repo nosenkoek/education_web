@@ -12,7 +12,8 @@ from app_report.tasks import create_report
 from celery.result import AsyncResult
 
 
-class AdminPermissionRequiredMixin(PermissionRequiredMixin, LoginRequiredMixin):
+class AdminPermissionRequiredMixin(PermissionRequiredMixin,
+                                   LoginRequiredMixin):
     login_url = '/admin/'
     permission_denied_message = _("You don't have permission. "
                                   "It can do only admin")
