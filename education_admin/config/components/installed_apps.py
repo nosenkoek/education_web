@@ -9,5 +9,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'app_users.apps.AppUsersConfig',
     'app_education.apps.AppEducationConfig',
-    'app_students.apps.AppStudentsConfig'
+    'app_students.apps.AppStudentsConfig',
+    'app_api.apps.AppApiConfig',
 ]
