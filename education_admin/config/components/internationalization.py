@@ -1,5 +1,4 @@
 import os.path
-from django.apps import apps
 
 LANGUAGE_CODE = 'ru-RU'
 

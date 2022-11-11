@@ -1,11 +1,9 @@
-from abc import ABC, abstractmethod
-from typing import List
+from abc import ABC
 
 from django.contrib.auth.models import Permission, Group
 from django.contrib.contenttypes.models import ContentType
 from django.core.management import BaseCommand
 from django.db import transaction
-from django.utils.translation import gettext_lazy as _
 
 from app_education.models import Discipline, Direction, DirectionDiscipline
 from app_students.models import Class, Student

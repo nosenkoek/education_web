@@ -5,9 +5,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
     'debug_toolbar',
     'rest_framework',
     'app_users.apps.AppUsersConfig',
     'app_education.apps.AppEducationConfig',
-    'app_students.apps.AppStudentsConfig'
+    'app_students.apps.AppStudentsConfig',
+    'app_api.apps.AppApiConfig',
+    'drf_yasg',
 ]

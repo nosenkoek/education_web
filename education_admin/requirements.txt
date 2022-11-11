@@ -12,3 +12,5 @@ openpyxl
 pydantic
 celery
 redis
+drf-yasg
+docutils
