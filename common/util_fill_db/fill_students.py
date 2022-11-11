@@ -1,10 +1,9 @@
 import random
 import uuid
-from abc import ABC
 from dataclasses import dataclass, astuple
 
 from datetime import datetime
-from typing import List, Dict
+from typing import List
 
 import psycopg2
 from faker import Faker

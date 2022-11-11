@@ -12,7 +12,7 @@ class DirectionList(ListAPIView):
     serializer_class = DirectionSerializer
 
 
-class DisciplineListAPIView(ListAPIView):
+class DisciplineList(ListAPIView):
     """Контроллер для списка дисциплин"""
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
@@ -23,7 +23,7 @@ class DisciplineListAPIView(ListAPIView):
         :return: queryset со всеми объектами или отфильтрованные
         по названию или id направления
         """
-        queryset = super(DisciplineListAPIView, self).get_queryset()
+        queryset = super(DisciplineList, self).get_queryset()
         direction_name = self.request.query_params.get('direction_name')
         direction_id = self.request.query_params.get('direction_id')
 
@@ -37,7 +37,7 @@ class DisciplineListAPIView(ListAPIView):
         return queryset
 
 
-class StudentListAPIView(ListAPIView):
+class StudentList(ListAPIView):
     """Контроллер для списка студентов"""
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
@@ -48,7 +48,7 @@ class StudentListAPIView(ListAPIView):
         :return: queryset со всеми объектами или отфильтрованные
         по названию или id направления
         """
-        queryset = super(StudentListAPIView, self).get_queryset()
+        queryset = super(StudentList, self).get_queryset()
         last_name = self.request.query_params.get('last_name')
         direction_id = self.request.query_params.get('direction_id')
         class_id = self.request.query_params.get('class_id')

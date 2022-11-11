@@ -1,3 +1,5 @@
+import os.path
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

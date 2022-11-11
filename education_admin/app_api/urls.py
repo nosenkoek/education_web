@@ -1,10 +1,9 @@
 from django.urls import path
 
-from app_api.views import DirectionListAPIView, DisciplineListAPIView, \
-    StudentListAPIView
+from app_api.views import DirectionList, DisciplineList, StudentList
 
 urlpatterns = [
-    path('directions/', DirectionListAPIView.as_view(), name='directions'),
-    path('disciplines/', DisciplineListAPIView.as_view(), name='disciplines'),
-    path('students/', StudentListAPIView.as_view(), name='students')
+    path('directions/', DirectionList.as_view(), name='directions'),
+    path('disciplines/', DisciplineList.as_view(), name='disciplines'),
+    path('students/', StudentList.as_view(), name='students')
 ]
