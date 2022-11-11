@@ -6,12 +6,14 @@ from app_education.models import Direction, Discipline
 from app_students.models import Student
 
 
-class DirectionListAPIView(ListAPIView):
+class DirectionList(ListAPIView):
+    """Контроллер для списка направлений"""
     queryset = Direction.objects.all()
     serializer_class = DirectionSerializer
 
 
 class DisciplineListAPIView(ListAPIView):
+    """Контроллер для списка дисциплин"""
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
 
@@ -36,6 +38,7 @@ class DisciplineListAPIView(ListAPIView):
 
 
 class StudentListAPIView(ListAPIView):
+    """Контроллер для списка студентов"""
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -60,4 +63,3 @@ class StudentListAPIView(ListAPIView):
         else:
             queryset = queryset.all()
         return queryset
-
